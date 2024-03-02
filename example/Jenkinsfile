@@ -11,24 +11,7 @@ pipeline {
                 git url: 'https://github.com/reshmabojje/Reshma.git'
             }
         }
-        stage('Build') {
-            steps {
-                // Perform build steps, for example:
-                bat 'mvn clean install'
-            }
-        }
-        stage('Test') {
-            steps {
-                // Run tests, for example:
-                bat 'mvn test'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                // Deploy your application, for example:
-                bat 'echo Deploying...'
-            }
-        }
+        
     }
 
     post {
