@@ -1,41 +1,41 @@
 pipeline {
     agent any
-    
+
     stages {
-        stage('Install dependencies') {
+        stage('Checkout') {
             steps {
-                sh 'npm install'
+                // Checkout your code from Git or any other SCM tool
+                git 'https://github.com/reshmabojje/Reshma.git'
             }
         }
-        
-        stage('Run tests') {
-            steps {
-                sh 'npm test'
-            }
-        }
-        
         stage('Build') {
             steps {
-                sh 'npm run build'
+                // Perform build steps, for example:
+                bat 'mvn clean install'
             }
         }
-        
+        stage('Test') {
+            steps {
+                // Run tests, for example:
+                bat 'mvn test'
+            }
+        }
         stage('Deploy') {
             steps {
-                // Deployment steps go here
-                sh 'echo "Deploying the application...." '
+                // Deploy your application, for example:
+                bat 'echo Deploying...'
             }
         }
     }
-    
+
     post {
         success {
-            // Actions to perform after a successful pipeline run
-            sh 'echo "Deployment Successfull" '
+            // Actions to perform if the pipeline succeeds
+            echo 'Pipeline succeeded!'
         }
         failure {
-            // Actions to perform after a failed pipeline run
-            sh 'echo "Deployment Failed" '
+            // Actions to perform if the pipeline fails
+            echo 'Pipeline failed!'
         }
     }
 }
