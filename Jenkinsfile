@@ -23,6 +23,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 // Deployment steps go here
+                sh 'echo "Deploying the application...." '
             }
         }
     }
@@ -30,9 +31,11 @@ pipeline {
     post {
         success {
             // Actions to perform after a successful pipeline run
+            sh 'echo "Deployment Successfull" '
         }
         failure {
             // Actions to perform after a failed pipeline run
+            sh 'echo "Deployment Failed" '
         }
     }
 }
