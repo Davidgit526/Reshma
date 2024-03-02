@@ -1,14 +1,14 @@
 pipeline {
     agent any
     tools {
-        git 'Git'
+        git 'Default'
     }
 
     stages {
         stage('Checkout') {
             steps {
                 // Checkout your code from Git or any other SCM tool
-                git 'https://github.com/reshmabojje/Reshma.git'
+                git url: 'https://github.com/reshmabojje/Reshma.git'
             }
         }
         stage('Build') {
